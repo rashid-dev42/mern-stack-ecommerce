@@ -7,7 +7,7 @@
   "lastName": "One",
   "email": "user.one@example.com",
   "password": "123456",
-  "isAdmin": true
+  "role": "Admin"
 },
 {
   "_id": {
@@ -18,7 +18,7 @@
   "lastName": "Two",
   "email": "user.two@example.com",
   "password": "123456",
-  "isAdmin": false
+  "role": "Admin"
 },
 {
   "_id": {
@@ -29,7 +29,7 @@
   "lastName": "Three",
   "email": "user.three@example.com",
   "password": "123456",
-  "isAdmin": false,
+  "role": "User",
   "__v": 0
 },
 {
@@ -41,7 +41,7 @@
   "lastName": "Four",
   "email": "user.four@example.com",
   "password": "123456",
-  "isAdmin": false,
+  "role": "User",
   "__v": 0
 },
 {
@@ -53,7 +53,7 @@
   "lastName": "Five",
   "email": "user.five@example.com",
   "password": "123456",
-  "isAdmin": false,
+  "role": "User",
   "__v": 0
 },
 {
@@ -65,7 +65,7 @@
   "lastName": "Six",
   "email": "user.six@example.com",
   "password": "123456",
-  "isAdmin": false,
+  "role": "User",
   "__v": 0
 },
 {
@@ -77,7 +77,7 @@
   "lastName": "Seven",
   "email": "user.seven@example.com",
   "password": "123456",
-  "isAdmin": false,
+  "role": "User",
   "__v": 0
 },
 {
@@ -89,7 +89,7 @@
   "lastName": "Eight",
   "email": "user.eight@example.com",
   "password": "123456",
-  "isAdmin": false,
+  "role": "User",
   "__v": 0
 },
 {
@@ -101,7 +101,7 @@
   "lastName": "Nine",
   "email": "user.nine@example.com",
   "password": "123456",
-  "isAdmin": false,
+  "role": "User",
   "__v": 0
 },
 {
@@ -113,7 +113,7 @@
   "lastName": "Ten",
   "email": "user.ten@example.com",
   "password": "123456",
-  "isAdmin": false
+  "role": "User"
 },
 {
   "_id": {
@@ -124,7 +124,7 @@
   "lastName": "Eleven",
   "email": "user.eleven@example.com",
   "password": "123456",
-  "isAdmin": false
+  "role": "User"
 },
 {
   "_id": {
@@ -135,7 +135,7 @@
   "lastName": "Twelve",
   "email": "user.twelve@example.com",
   "password": "123456",
-  "isAdmin": false
+  "role": "User"
 },
 {
   "_id": {
@@ -146,7 +146,7 @@
   "lastName": "Thirteen",
   "email": "user.thirteen@example.com",
   "password": "123456",
-  "isAdmin": false
+  "role": "User"
 },
 {
   "_id": {
@@ -157,7 +157,7 @@
   "lastName": "Fourteen",
   "email": "user.fourteen@example.com",
   "password": "123456",
-  "isAdmin": false
+  "role": "User"
 },
 {
   "_id": {
@@ -168,7 +168,7 @@
   "lastName": "Fifteen",
   "email": "user.fifteen@example.com",
   "password": "123456",
-  "isAdmin": false
+  "role": "User"
 },
 {
   "_id": {
@@ -179,7 +179,7 @@
   "lastName": "Sixteen",
   "email": "user.sixteen@example.com",
   "password": "123456",
-  "isAdmin": false
+  "role": "User"
 },
 {
   "_id": {
@@ -190,7 +190,7 @@
   "lastName": "Seventeen",
   "email": "user.seventeen@example.com",
   "password": "123456",
-  "isAdmin": false
+  "role": "User"
 },
 {
   "_id": {
@@ -201,7 +201,7 @@
   "lastName": "Eighteen",
   "email": "user.eighteen@example.com",
   "password": "123456",
-  "isAdmin": false
+  "role": "User"
 },
 {
   "_id": {
@@ -212,7 +212,7 @@
   "lastName": "Nineteen",
   "email": "user.nineteen@example.com",
   "password": "123456",
-  "isAdmin": false
+  "role": "User"
 },
 {
   "_id": {
@@ -223,5 +223,5 @@
   "lastName": "Twenty",
   "email": "user.twenty@example.com",
   "password": "123456",
-  "isAdmin": false
+  "role": "User"
 }]
