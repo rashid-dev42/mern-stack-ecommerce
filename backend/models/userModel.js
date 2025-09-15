@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
 const userSchema = new Schema({
+  imgPath: String,
   firstName: {
     type: String,
     required: [true, "First name is required"]
