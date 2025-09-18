@@ -1,4 +1,24 @@
+:root {
+  --color-1: #4169e1;
+  --color-2: #6585e7;
+  --color-3: #fff;
+}
+
 .App {
   max-width: 1920px;
   margin: 0 auto;
+}
+
+.container-90 {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.right-position-0 {
+  right: 0;
+}
+
+.left-position-0 {
+  left: 0;
 }
