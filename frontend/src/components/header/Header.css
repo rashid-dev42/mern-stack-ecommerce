@@ -46,7 +46,7 @@
   vertical-align: middle;
   text-align: center;
   font-size: 12px;
-  background-color: #000;
+  background-color: var(--color-4);
   color: var(--color-3);
 }
 
@@ -79,4 +79,138 @@
 
 .Header-dropdownLink:hover {
   background-color: var(--color-2);
+}
+
+.Header-sidenavButton {
+  display: none;
+  height: 100%;
+  padding: 0 1rem;
+  border: none;
+  background-color: var(--color-1);
+  color: var(--color-3);
+  font-size: 32px;
+}
+
+.Header-sidenavButton:hover {
+  background-color: var(--color-2);
+}
+
+.Header-sidenav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100vh;
+  background-color: var(--color-5);
+  overflow-y: auto;
+  animation-name: fadeInAnimation;
+  animation-duration: 0.5s;
+}
+
+.Header-sidenavHeading {
+  height: 60px;
+}
+
+.Header-sidenavHeading h4 {
+  height: 100%;
+  padding: 0 1rem;
+  margin: 0;
+  line-height: 60px;
+  vertical-align: middle;
+  color: var(--color-4);
+}
+
+.Header-sidenavHeading button {
+  display: block;
+  height: 100%;
+  width: 60px;
+  border: none;
+  background-color: var(--color-6);
+  color: var(--color-3);
+  font-size: 24px;
+}
+
+.Header-sidenavHeading button:hover {
+  background-color: var(--color-7);
+}
+
+.Header-sidenavItem {
+  min-height: 40px;
+}
+
+.Header-sidenavLink {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  line-height: 40px;
+  vertical-align: middle;
+  padding: 0 1rem;
+  text-decoration: none;
+  color: var(--color-4);
+}
+
+.Header-sidenavLink:hover {
+  background-color: var(--color-8);
+}
+
+/* sdc = sidenav dropdown content */
+.Header-sdc {
+  display: none;
+}
+
+/* sd = sidenav dropdown */
+.Header-sd:hover .Header-sdc {
+  display: block;
+}
+
+/* sdi = sidenav dropdown item */
+.Header-sdi {
+  height: 40px;
+}
+
+/* sdl = sidenav dropdown link */
+.Header-sdl {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  line-height: 40px;
+  vertical-align: middle;
+  text-decoration: none;
+  color: var(--color-4);
+  padding: 0 2rem;
+}
+
+.Header-sdl:hover {
+  background-color: var(--color-8);
+}
+
+/* sic = sidenav item count */
+.Header-sic {
+  position: absolute;
+  top: 0;
+  left: 25px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  line-height: 20px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 12px;
+  background-color: var(--color-4);
+  color: var(--color-3);
+}
+
+@keyframes fadeInAnimation {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media only screen and (max-width: 768px) {
+  .Header-navbar {
+    display: none;
+  }
+  .Header-sidenavButton {
+    display: block;
+  }
 }

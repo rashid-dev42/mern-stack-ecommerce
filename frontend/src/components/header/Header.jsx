@@ -2,6 +2,14 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const showSidenav = () => {
+    document.getElementById("Header-sidenav").classList.replace("d-none", "d-block");
+  };
+
+  const closeSidenav = () => {
+    document.getElementById("Header-sidenav").classList.replace("d-block", "d-none");
+  };
+
   return (
     <div className="Header">
       {/* Header Heading and Navbar Container */}
@@ -58,6 +66,85 @@ const Header = () => {
               </div>
               <div className="Header-dropdownItem">
                 <Link className="Header-dropdownLink">Sign Up</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Header Sidenav Button */}
+        <button className="Header-sidenavButton" onClick={showSidenav}>
+          <i className="bi bi-list"></i>
+        </button>
+      </div>
+
+      {/* Header Sidenav */}
+      <div className="Header-sidenav d-none" id="Header-sidenav">
+        {/* Header Sidenav Heading */}
+        <div className="Header-sidenavHeading">
+          <div className="d-flex h-100 justify-content-between align-items-center">
+            <h4>Menu</h4>
+            <button onClick={closeSidenav}>
+              <i className="bi bi-x-lg"></i>
+            </button>
+          </div>
+        </div>
+
+        {/* Header Sidenav Content */}
+        <div className="mt-3">
+          <div className="Header-sidenavItem">
+            <Link className="Header-sidenavLink">Home</Link>
+          </div>
+          {/* sd = sidenav dropdown */}
+          <div className="Header-sidenavItem Header-sd">
+            <Link className="Header-sidenavLink">Categories</Link>
+            {/* sdc = sidenav dropdown content */}
+            <div className="Header-sdc">
+              {/* sdi = sidenav dropdown item */}
+              <div className="Header-sdi">
+                {/* sdl = sidenav dropdown link */}
+                <Link className="Header-sdl">Mobile Phone</Link>
+              </div>
+              <div className="Header-sdi">
+                <Link className="Header-sdl">Smart Watch</Link>
+              </div>
+              <div className="Header-sdi">
+                <Link className="Header-sdl">Headphone</Link>
+              </div>
+              <div className="Header-sdi">
+                <Link className="Header-sdl">Earphone</Link>
+              </div>
+              <div className="Header-sdi">
+                <Link className="Header-sdl">Keyboard</Link>
+              </div>
+              <div className="Header-sdi">
+                <Link className="Header-sdl">Mouse</Link>
+              </div>
+            </div>
+          </div>
+          <div className="Header-sidenavItem">
+            <Link className="Header-sidenavLink">Shop</Link>
+          </div>
+          <div className="Header-sidenavItem position-relative">
+            <Link className="Header-sidenavLink">
+              <i className="bi bi-cart"></i>
+              {/* sic = sidenav item count */}
+            </Link>
+            <span className="Header-sic">0</span>
+          </div>
+          {/* sd = sidenav dropdown */}
+          <div className="Header-sidenavItem Header-sd">
+            <Link className="Header-sidenavLink">
+              <i className="bi bi-person-circle"></i>
+            </Link>
+            {/* sdc = sidenav dropdown content */}
+            <div className="Header-sdc">
+              {/* sdi = sidenav dropdown item */}
+              <div className="Header-sdi">
+                {/* sdl = sidenav dropdown link */}
+                <Link className="Header-sdl">Sign In</Link>
+              </div>
+              <div className="Header-sdi">
+                <Link className="Header-sdl">Sign Up</Link>
               </div>
             </div>
           </div>
