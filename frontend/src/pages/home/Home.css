@@ -1,3 +1,4 @@
+/* Style Hero Section */
 .Home-heroSection {
   height: 400px;
   background-image: url("../../assets/bg-image-1_1920x1081.jpg");
@@ -31,6 +32,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* ------------------------------ */
+
+/* Style Why Choose Us Section */
+/* wcus = why choose us section */
+.Home-wcus {
+  background-color: var(--color-8);
 }
 
 @media only screen and (max-width: 768px) {
