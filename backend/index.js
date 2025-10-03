@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const userRoutes = require("./routes/userRoutes.js");
+const productRoutes = require("./routes/productRoutes.js");
 const app = express();
 const port = 5001;
 
@@ -18,6 +19,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/users", userRoutes);
+app.use("/api/products", productRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("404 not found");

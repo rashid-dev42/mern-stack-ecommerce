@@ -55,7 +55,7 @@ const signUp = async (req, res, next) => {
       errorStatus = 400;
     }
 
-    await mongoose.connect(process.env.MONGODB_LOCAL_URI);
+    await mongoose.connect(process.env.MONGODB_ATLAS_URI);
     
     if (!errorStatus) {
       const passwordData = hashPassword(password);
