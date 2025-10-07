@@ -88,7 +88,7 @@ const Home = () => {
         </div>
         <p className="">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
       </div>
-      {loading && <div>
+      {loading && <div className="mb-5">
         <div className="d-flex justify-content-center">
           <div className="spinner-border text-primary" role="status">
             <span className="visually-hidden">Loading...</span>
