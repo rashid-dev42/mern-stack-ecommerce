@@ -1,7 +1,22 @@
 import "./Home.css";
 import smartphone1 from "../../assets/smartphone-1.png";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import SingleProduct from "../../components/singleProduct/SingleProduct";
 
 const Home = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios.get("http://localhost:5001/api/products?limit=12&page=1")
+    .then(res => {
+      setProducts(res.data.products);
+      setLoading(false);
+    })
+    .catch(error => console.log(error));
+  }, []);
+
   return (
     <div>
       {/* Hero Section */}
@@ -35,7 +50,7 @@ const Home = () => {
       {/* wcus = why choose us section */}
       <div className="Home-wcus">
         <div className="container py-5">
-          <div className="row g-5">
+          <div className="row gy-5">
             <div className="col-12 col-sm-6 col-lg-3 text-center">
               <div>
                 <div><i className="bi bi-truck fs-1"></i></div>
@@ -63,6 +78,31 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {/* Products Section */}
+      <div className="container text-center mt-5 mb-5">
+        <div>
+          <div className="d-flex justify-content-center">
+            <h3 className="border-bottom border-secondary border-3 pb-2" style={{ width: "fit-content" }}>Our Products</h3>
+          </div>
+        </div>
+        <p className="">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+      </div>
+      {loading && <div>
+        <div className="d-flex justify-content-center">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>}
+      {!loading && <div className="container">
+        <div className="row gy-5">
+          {products.map(product => <div className="col-12 col-sm-6 col-lg-4 col-xl-3"><SingleProduct key={product._id} product={product}/></div>)}
+        </div>
+        <div className="container text-center my-5">
+          <button className="btn btn-dark">View All</button>
+        </div>
+      </div>}
     </div>
   );
 };

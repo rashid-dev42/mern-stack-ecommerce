@@ -1,0 +1,14 @@
+.SingleProduct {
+  width: 250px;
+  margin: 0 auto;
+}
+
+.SingleProduct-img {
+  width: 250px;
+  height: 350px;
+}
+
+.SingleProduct-img > img {
+  max-width: 250px;
+  max-height: 350px;
+}
