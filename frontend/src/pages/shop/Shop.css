@@ -1,0 +1,8 @@
+/* Style Shop Header Section */
+.Shop {
+  min-height: calc(100vh - 100px);
+}
+
+.Shop-header {
+  background-color: var(--color-8);
+}

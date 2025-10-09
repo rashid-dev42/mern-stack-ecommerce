@@ -22,7 +22,7 @@ const Header = () => {
         {/* Header Navbar */}
         <div className="Header-navbar h-100">
           <div className="Header-navItem">
-            <Link className="Header-navLink">Home</Link>
+            <Link className="Header-navLink" to="/">Home</Link>
           </div>
           <div className="Header-navItem Header-dropdown">
             <Link className="Header-navLink">Categories</Link>
@@ -31,7 +31,7 @@ const Header = () => {
                 <Link className="Header-dropdownLink">Mobile Phone</Link>
               </div>
               <div className="Header-dropdownItem">
-                <Link className="Header-dropdownLink">Smart Watch</Link>
+                <Link className="Header-dropdownLink">Watch</Link>
               </div>
               <div className="Header-dropdownItem">
                 <Link className="Header-dropdownLink">Headphone</Link>
@@ -48,7 +48,7 @@ const Header = () => {
             </div>
           </div>
           <div className="Header-navItem">
-            <Link className="Header-navLink">Shop</Link>
+            <Link className="Header-navLink" to="/shop">Shop</Link>
           </div>
           <div className="Header-navItem">
             <Link className="Header-navLink">
@@ -92,7 +92,7 @@ const Header = () => {
         {/* Header Sidenav Content */}
         <div className="mt-3">
           <div className="Header-sidenavItem">
-            <Link className="Header-sidenavLink">Home</Link>
+            <Link className="Header-sidenavLink" to="/">Home</Link>
           </div>
           {/* sd = sidenav dropdown */}
           <div className="Header-sidenavItem Header-sd">
@@ -105,7 +105,7 @@ const Header = () => {
                 <Link className="Header-sdl">Mobile Phone</Link>
               </div>
               <div className="Header-sdi">
-                <Link className="Header-sdl">Smart Watch</Link>
+                <Link className="Header-sdl">Watch</Link>
               </div>
               <div className="Header-sdi">
                 <Link className="Header-sdl">Headphone</Link>
@@ -122,13 +122,13 @@ const Header = () => {
             </div>
           </div>
           <div className="Header-sidenavItem">
-            <Link className="Header-sidenavLink">Shop</Link>
+            <Link className="Header-sidenavLink" to="/shop">Shop</Link>
           </div>
           <div className="Header-sidenavItem position-relative">
             <Link className="Header-sidenavLink">
               <i className="bi bi-cart"></i>
-              {/* sic = sidenav item count */}
             </Link>
+            {/* sic = sidenav item count */}
             <span className="Header-sic">0</span>
           </div>
           {/* sd = sidenav dropdown */}

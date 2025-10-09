@@ -5,6 +5,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Home from "./pages/home/Home";
+import Shop from "./pages/shop/Shop";
 
 const App = () => {
   return (
@@ -14,11 +15,8 @@ const App = () => {
           <Route path="/" element={<Layout>
             <Home/>
           </Layout>}/>
-          <Route path="/categories" element={<Layout>
-            <p>This is categories page</p>
-          </Layout>}/>
           <Route path="/shop" element={<Layout>
-            <p>This is shop page</p>
+            <Shop/>
           </Layout>}/>
           <Route path="/cart" element={<Layout>
             <p>This is cart page</p>

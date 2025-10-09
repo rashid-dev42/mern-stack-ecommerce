@@ -7,15 +7,27 @@ import SingleProduct from "../../components/singleProduct/SingleProduct";
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:5001/api/products?limit=12&page=1")
+    fetchData(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?limit=12&page=1`);
+  }, []);
+
+  const fetchData = (apiURL) => {
+    setLoading(true);
+    setProducts([]);
+    setMessage("");
+    axios.get(apiURL)
     .then(res => {
-      setProducts(res.data.products);
+      if (res.data.products.length > 0) {
+        setProducts(res.data.products);
+      } else if (res.data.products.length === 0) {
+        setMessage("No items found.");
+      }
       setLoading(false);
     })
     .catch(error => console.log(error));
-  }, []);
+  };
 
   return (
     <div>
@@ -88,6 +100,9 @@ const Home = () => {
         </div>
         <p className="">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
       </div>
+      {message !== "" && <div className="container mb-5">
+        <h3 className="text-secondary text-center">{message}</h3><br/>
+      </div>}
       {loading && <div className="mb-5">
         <div className="d-flex justify-content-center">
           <div className="spinner-border text-primary" role="status">
@@ -97,11 +112,11 @@ const Home = () => {
       </div>}
       {!loading && <div className="container">
         <div className="row gy-5">
-          {products.map(product => <div className="col-12 col-sm-6 col-lg-4 col-xl-3"><SingleProduct key={product._id} product={product}/></div>)}
+          {products.map(product => <div key={product._id} className="col-12 col-sm-6 col-lg-4 col-xl-3"><SingleProduct product={product}/></div>)}
         </div>
-        <div className="container text-center my-5">
+        {message === "" && <div className="container text-center my-5">
           <button className="btn btn-dark">View All</button>
-        </div>
+        </div>}
       </div>}
     </div>
   );
