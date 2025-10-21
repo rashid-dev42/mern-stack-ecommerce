@@ -21,8 +21,10 @@ const Shop = () => {
       setCategory(category);
     } else {
       fetchData(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?limit=${items}&page=${page}`);
+      setCategory("All");
     }
-  }, []);
+  }, [location]); /* When a NavLink/Link is clicked, a new location object reference is generated even if it points to the same route.
+  If we use the location object in the dependency array, it will re-render the component. */
 
   const fetchData = (apiURL) => {
     window.scrollTo({

@@ -1,13 +1,26 @@
 import "./Header.css";
+import { useSelector } from "react-redux";
+import MiniCart from "../miniCart/MiniCart";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const cartItems = useSelector(state => state.cartItems);
+
   const showSidenav = () => {
     document.getElementById("Header-sidenav").classList.replace("d-none", "d-block");
   };
 
   const closeSidenav = () => {
     document.getElementById("Header-sidenav").classList.replace("d-block", "d-none");
+  };
+
+  const showMiniCart = () => {
+    document.getElementById("Header-miniCart").classList.replace("d-none", "d-block");
+    closeSidenav();
+  };
+
+  const closeMiniCart = () => {
+    document.getElementById("Header-miniCart").classList.replace("d-block", "d-none");
   };
 
   return (
@@ -28,22 +41,22 @@ const Header = () => {
             <Link className="Header-navLink">Categories</Link>
             <div className="Header-dropdownContent left-position-0">
               <div className="Header-dropdownItem">
-                <Link className="Header-dropdownLink">Mobile Phone</Link>
+                <Link className="Header-dropdownLink" to="/shop?category=Mobile Phone">Mobile Phone</Link>
               </div>
               <div className="Header-dropdownItem">
-                <Link className="Header-dropdownLink">Watch</Link>
+                <Link className="Header-dropdownLink" to="/shop?category=Watch">Watch</Link>
               </div>
               <div className="Header-dropdownItem">
-                <Link className="Header-dropdownLink">Headphone</Link>
+                <Link className="Header-dropdownLink" to="/shop?category=Headphone">Headphone</Link>
               </div>
               <div className="Header-dropdownItem">
-                <Link className="Header-dropdownLink">Earphone</Link>
+                <Link className="Header-dropdownLink" to="/shop?category=Earphone">Earphone</Link>
               </div>
               <div className="Header-dropdownItem">
-                <Link className="Header-dropdownLink">Keyboard</Link>
+                <Link className="Header-dropdownLink" to="/shop?category=Keyboard">Keyboard</Link>
               </div>
               <div className="Header-dropdownItem">
-                <Link className="Header-dropdownLink">Mouse</Link>
+                <Link className="Header-dropdownLink" to="/shop?category=Mouse">Mouse</Link>
               </div>
             </div>
           </div>
@@ -51,15 +64,15 @@ const Header = () => {
             <Link className="Header-navLink" to="/shop">Shop</Link>
           </div>
           <div className="Header-navItem">
-            <Link className="Header-navLink">
+            <span role="button" className="Header-navLink" onClick={showMiniCart}>
               <i className="bi bi-cart"></i>
-            </Link>
-            <span className="Header-itemCount">0</span>
+            </span>
+            <span className="Header-itemCount">{cartItems.length}</span>
           </div>
           <div className="Header-navItem Header-dropdown">
-            <Link className="Header-navLink">
+            <span role="button" className="Header-navLink">
               <i className="bi bi-person-circle"></i>
-            </Link>
+            </span>
             <div className="Header-dropdownContent right-position-0">
               <div className="Header-dropdownItem">
                 <Link className="Header-dropdownLink">Sign In</Link>
@@ -83,7 +96,7 @@ const Header = () => {
         <div className="Header-sidenavHeading">
           <div className="d-flex h-100 justify-content-between align-items-center">
             <h4>Menu</h4>
-            <button onClick={closeSidenav}>
+            <button className="close-btn" onClick={closeSidenav}>
               <i className="bi bi-x-lg"></i>
             </button>
           </div>
@@ -102,22 +115,22 @@ const Header = () => {
               {/* sdi = sidenav dropdown item */}
               <div className="Header-sdi">
                 {/* sdl = sidenav dropdown link */}
-                <Link className="Header-sdl">Mobile Phone</Link>
+                <Link className="Header-sdl" to="/shop?category=Mobile Phone">Mobile Phone</Link>
               </div>
               <div className="Header-sdi">
-                <Link className="Header-sdl">Watch</Link>
+                <Link className="Header-sdl" to="/shop?category=Watch">Watch</Link>
               </div>
               <div className="Header-sdi">
-                <Link className="Header-sdl">Headphone</Link>
+                <Link className="Header-sdl" to="/shop?category=Headphone">Headphone</Link>
               </div>
               <div className="Header-sdi">
-                <Link className="Header-sdl">Earphone</Link>
+                <Link className="Header-sdl" to="/shop?category=Earphone">Earphone</Link>
               </div>
               <div className="Header-sdi">
-                <Link className="Header-sdl">Keyboard</Link>
+                <Link className="Header-sdl" to="/shop?category=Keyboard">Keyboard</Link>
               </div>
               <div className="Header-sdi">
-                <Link className="Header-sdl">Mouse</Link>
+                <Link className="Header-sdl" to="/shop?category=Mouse">Mouse</Link>
               </div>
             </div>
           </div>
@@ -125,11 +138,11 @@ const Header = () => {
             <Link className="Header-sidenavLink" to="/shop">Shop</Link>
           </div>
           <div className="Header-sidenavItem position-relative">
-            <Link className="Header-sidenavLink">
+            <Link className="Header-sidenavLink" onClick={showMiniCart}>
               <i className="bi bi-cart"></i>
             </Link>
             {/* sic = sidenav item count */}
-            <span className="Header-sic">0</span>
+            <span className="Header-sic">{cartItems.length}</span>
           </div>
           {/* sd = sidenav dropdown */}
           <div className="Header-sidenavItem Header-sd">
@@ -149,6 +162,18 @@ const Header = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Mini Cart Container */}
+      <div className="Header-miniCart d-none" id="Header-miniCart">
+        {/* mch = mini cart header */}
+        <div className="Header-mch">
+          <div className="d-flex h-100 justify-content-between align-items-center">
+            <h4 className="ps-3">Mini Cart</h4>
+            <button className="close-btn" onClick={closeMiniCart}><i className="bi bi-x-lg"></i></button>
+          </div>
+        </div>
+        <MiniCart/>
       </div>
     </div>
   );

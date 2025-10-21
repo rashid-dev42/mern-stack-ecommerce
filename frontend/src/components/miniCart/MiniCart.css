@@ -1,0 +1,38 @@
+.MiniCart {
+  position: relative;
+  height: calc(100vh - 60px);
+}
+
+.MiniCart-empty {
+  height: 100%;
+}
+
+.MiniCart h1 {
+  font-size: 64px;
+}
+
+.MiniCart-content {
+  height: 100%;
+}
+
+.MiniCart-main {
+  height: calc(100% - 180px);
+  overflow-y: auto;
+}
+
+.MiniCart-itemImage {
+  margin: 5px;
+}
+
+.MiniCart-itemImage > img {
+  width: 75px;
+  height: 75px;
+}
+
+.MiniCart-itemInfo {
+  width: calc(100% - 85px);
+}
+
+.MiniCart-footer {
+  height: 180px;
+}

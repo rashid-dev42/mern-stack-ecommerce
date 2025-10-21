@@ -21,3 +21,17 @@
 .left-position-0 {
   left: 0;
 }
+
+.close-btn {
+  display: block;
+  height: 60px;
+  width: 60px;
+  border: none;
+  background-color: var(--color-6);
+  color: var(--color-3);
+  font-size: 24px;
+}
+
+.close-btn:hover {
+  background-color: var(--color-7);
+}
