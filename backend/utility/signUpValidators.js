@@ -20,14 +20,14 @@ const validateEmail = async (email) => {
 
   try {
     await mongoose.connect(process.env.MONGODB_ATLAS_URI);
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }) || "";
 
     if (!email) {
       emailError = "Email is required.";
     } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       emailError = "Email is invalid.";
-    } else if (user) {
-      emailError = "User already exists.";
+    } else if (user !== "") {
+      emailError = "Email address is already exists.";
     }
   } catch (error) {
     next(error);

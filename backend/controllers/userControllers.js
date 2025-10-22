@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 const User = require("../models/userModel");
+const jwt = require("jsonwebtoken");
 const {
   validateName,
   validateEmail,
   validatePassword,
   validateConfirmPassword
 } = require("../utility/signUpValidators");
-const { hashPassword } = require("../utility/private");
+const { hashPassword, verifyPassword } = require("../utility/private");
 
 const signUp = async (req, res, next) => {
   try {
@@ -16,7 +17,13 @@ const signUp = async (req, res, next) => {
     let password = req.body.password;
     let confirmPassword = req.body.confirmPassword;
 
-    const errorResult = {};
+    const errorResult = {
+      firstNameError: "",
+      lastNameError: "",
+      emailError: "",
+      passwordError: "",
+      confirmPasswordError: ""
+    };
     let errorStatus = null;
 
     // validate first name
@@ -61,11 +68,48 @@ const signUp = async (req, res, next) => {
       const passwordData = hashPassword(password);
       const newUser = new User({ imgPath: "", firstName, lastName, email, password: passwordData });
       await newUser.save();
-      res.status(201).send("Sign Up Successful");
+      res.status(201).send({ success: true, message: "Sign Up Successful" });
     } else {
-      res.status(errorStatus).send(errorResult);
+      res.status(errorStatus).send({ success: false, errorResult });
     }
   } catch(error) {
+    next(error);
+  } finally {
+    await mongoose.connection.close();
+  }
+};
+
+const signIn = async (req, res, next) => {
+  try {
+    const email = req.body.email;
+    const password = req.body.password;
+    let passwordVerification = false;
+
+    await mongoose.connect(process.env.MONGODB_ATLAS_URI);
+    const userInfo = await User.findOne({ email: email }) || "";
+    if (userInfo !== "") {
+      passwordVerification = verifyPassword(password, userInfo.password);
+    }
+    
+    if (passwordVerification) {
+      const token = jwt.sign({
+        data: userInfo._id
+      }, process.env.PRIVATE_KEY, { expiresIn: "10000" });
+      res.status(200).send({
+        success: true,
+        message: "Sign In Successful",
+        data: {
+          token,
+          id: userInfo._id,
+          firstName: userInfo.firstName,
+          lastName: userInfo.lastName,
+          email: userInfo.email
+        }
+      });
+    } else {
+      res.status(401).send({ success: false, message: "Incorrect email or password" });
+    }
+  } catch (error) {
     next(error);
   } finally {
     await mongoose.connection.close();
@@ -95,4 +139,4 @@ const getUsers = async (req, res, next) => {
   }
 };
 
-module.exports = { signUp, getUsers };
+module.exports = { signUp, signIn, getUsers };
