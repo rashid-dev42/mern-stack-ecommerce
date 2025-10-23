@@ -35,3 +35,7 @@
 .close-btn:hover {
   background-color: var(--color-7);
 }
+
+.btn-h-1 {
+  height: 50px;
+}

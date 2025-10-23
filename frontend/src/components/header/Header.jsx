@@ -74,12 +74,18 @@ const Header = () => {
               <i className="bi bi-person-circle"></i>
             </span>
             <div className="Header-dropdownContent right-position-0">
-              <div className="Header-dropdownItem">
-                <Link className="Header-dropdownLink">Sign In</Link>
-              </div>
-              <div className="Header-dropdownItem">
-                <Link className="Header-dropdownLink">Sign Up</Link>
-              </div>
+              {!localStorage.getItem("email") && <div className="Header-dropdownItem">
+                <Link className="Header-dropdownLink" to="/sign-in">Sign In</Link>
+              </div>}
+              {!localStorage.getItem("email") && <div className="Header-dropdownItem">
+                <Link className="Header-dropdownLink" to="/sign-up">Sign Up</Link>
+              </div>}
+              {localStorage.getItem("email") && <div className="Header-dropdownItem">
+                <Link className="Header-dropdownLink">Dashboard</Link>
+              </div>}
+              {localStorage.getItem("email") && <div className="Header-dropdownItem">
+                <Link className="Header-dropdownLink" to="/sign-out">Sign Out</Link>
+              </div>}
             </div>
           </div>
         </div>
@@ -152,13 +158,20 @@ const Header = () => {
             {/* sdc = sidenav dropdown content */}
             <div className="Header-sdc">
               {/* sdi = sidenav dropdown item */}
-              <div className="Header-sdi">
+              {!localStorage.getItem("email") && <div className="Header-sdi">
                 {/* sdl = sidenav dropdown link */}
-                <Link className="Header-sdl">Sign In</Link>
-              </div>
-              <div className="Header-sdi">
-                <Link className="Header-sdl">Sign Up</Link>
-              </div>
+                <Link className="Header-sdl" to="/sign-in">Sign In</Link>
+              </div>}
+              {!localStorage.getItem("email") && <div className="Header-sdi">
+                <Link className="Header-sdl" to="/sign-up">Sign Up</Link>
+              </div>}
+              {localStorage.getItem("email") && <div className="Header-sdi">
+                {/* sdl = sidenav dropdown link */}
+                <Link className="Header-sdl">Dashboard</Link>
+              </div>}
+              {localStorage.getItem("email") && <div className="Header-sdi">
+                <Link className="Header-sdl" to="/sign-out">Sign Out</Link>
+              </div>}
             </div>
           </div>
         </div>

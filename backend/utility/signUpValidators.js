@@ -19,7 +19,7 @@ const validateEmail = async (email) => {
   let emailError = "";
 
   try {
-    await mongoose.connect(process.env.MONGODB_ATLAS_URI);
+    await mongoose.connect(process.env.MONGODB_URI);
     const user = await User.findOne({ email }) || "";
 
     if (!email) {

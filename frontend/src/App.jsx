@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Home from "./pages/home/Home";
 import Shop from "./pages/shop/Shop";
+import SignIn from "./pages/signIn/SignIn";
+import SignOut from "./pages/signOut/SignOut";
 
 const App = () => {
   return (
@@ -22,11 +24,12 @@ const App = () => {
             <p>This is cart page</p>
           </Layout>}/>
           <Route path="/sign-in" element={<Layout>
-            <p>This is sign-in page</p>
+            <SignIn/>
           </Layout>}/>
           <Route path="/sign-up" element={<Layout>
             <p>This is sign-up page</p>
           </Layout>}/>
+          <Route path="/sign-out" element={<SignOut/>}/>
         </Routes>
       </BrowserRouter>
     </div>

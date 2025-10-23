@@ -12,7 +12,7 @@ const getProducts = async (req, res, next) => {
       filter.category = search;
     }
 
-    await mongoose.connect(process.env.MONGODB_ATLAS_URI);
+    await mongoose.connect(process.env.MONGODB_URI);
     const products = await Product.find(filter).limit(limit).skip((page - 1) * limit);
     const countProducts = await Product.find(filter).countDocuments();
     res.status(200).send({
