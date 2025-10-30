@@ -48,7 +48,7 @@ const validatePassword = (password) => {
     passwordError = "Password must contain at least 1 uppercase letter.";
   } else if (!/[0-9]/.test(password)) {
     passwordError = "Password must contain at least 1 number."
-  } else if (!/[~!@#$%^&*()-=_+[\]{};':",.\/<>?|]/.test(password)) {
+  } else if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`]/.test(password)) {
     passwordError = "Password must contain at least 1 special character.";
   } else if (password.length < 6) {
     passwordError = "Password must be at least 6 characters long.";

@@ -66,9 +66,9 @@ const SignIn = () => {
       {localStorage.getItem("email") ? <Navigate to="/"/> : <div className="container mb-5">
         <h1 className="mt-5 text-center">Welcome Back</h1>
         <h6 className="mt-2 mb-4 text-center text-secondary">Please sign in to continue</h6>
-        <form onSubmit={handleSubmit} className="d-block w-100">
+        <form onSubmit={handleSubmit} className="d-block w-100" autoComplete="off">
           <div className="mb-3">
-            <label htmlFor="email" className="d-block fs-5">Email Address</label>
+            <label htmlFor="email" className="d-block fs-5">Email</label>
             <input
               type="email"
               name="email"
@@ -104,7 +104,7 @@ const SignIn = () => {
             <button type="submit" className="btn-h-1 d-block w-100 btn btn-primary fs-5">{buttonContent}</button>
           </div>
         </form>
-        <h6 className="text-center mt-5">Do not have an account? <Link className="text-decoration-none border-bottom border-primary">Sign up</Link> now</h6>
+        <h6 className="text-center mt-5">Do not have an account? <Link className="text-decoration-none border-bottom border-primary" to="/sign-up">Sign up</Link> now</h6>
         {showToast && <ToastMessage success={success} message={message} setShowToast={setShowToast}/>}
       </div>}
     </div>

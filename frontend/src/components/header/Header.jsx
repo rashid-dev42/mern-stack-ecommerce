@@ -81,7 +81,7 @@ const Header = () => {
                 <Link className="Header-dropdownLink" to="/sign-up">Sign Up</Link>
               </div>}
               {localStorage.getItem("email") && <div className="Header-dropdownItem">
-                <Link className="Header-dropdownLink">Dashboard</Link>
+                <Link className="Header-dropdownLink" to="/dashboard">Dashboard</Link>
               </div>}
               {localStorage.getItem("email") && <div className="Header-dropdownItem">
                 <Link className="Header-dropdownLink" to="/sign-out">Sign Out</Link>
@@ -167,7 +167,7 @@ const Header = () => {
               </div>}
               {localStorage.getItem("email") && <div className="Header-sdi">
                 {/* sdl = sidenav dropdown link */}
-                <Link className="Header-sdl">Dashboard</Link>
+                <Link className="Header-sdl" to="/dashboard">Dashboard</Link>
               </div>}
               {localStorage.getItem("email") && <div className="Header-sdi">
                 <Link className="Header-sdl" to="/sign-out">Sign Out</Link>

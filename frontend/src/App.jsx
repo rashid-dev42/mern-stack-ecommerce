@@ -7,6 +7,7 @@ import Layout from "./components/layout/Layout";
 import Home from "./pages/home/Home";
 import Shop from "./pages/shop/Shop";
 import SignIn from "./pages/signIn/SignIn";
+import SignUp from "./pages/signUp/SignUp";
 import SignOut from "./pages/signOut/SignOut";
 
 const App = () => {
@@ -27,9 +28,12 @@ const App = () => {
             <SignIn/>
           </Layout>}/>
           <Route path="/sign-up" element={<Layout>
-            <p>This is sign-up page</p>
+            <SignUp/>
           </Layout>}/>
           <Route path="/sign-out" element={<SignOut/>}/>
+          <Route path="*" element={<Layout>
+            <p>404 Not Found. Sorry! The page you are looking for was not found.</p>
+          </Layout>}/>
         </Routes>
       </BrowserRouter>
     </div>
