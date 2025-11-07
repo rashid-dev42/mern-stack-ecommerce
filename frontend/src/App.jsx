@@ -9,6 +9,7 @@ import Shop from "./pages/shop/Shop";
 import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
 import SignOut from "./pages/signOut/SignOut";
+import VerifyOrder from "./pages/verifyOrder/VerifyOrder";
 
 const App = () => {
   return (
@@ -31,6 +32,9 @@ const App = () => {
             <SignUp/>
           </Layout>}/>
           <Route path="/sign-out" element={<SignOut/>}/>
+          <Route path="/verify-order" element={<Layout>
+            <VerifyOrder/>
+          </Layout>}/>
           <Route path="*" element={<Layout>
             <p>404 Not Found. Sorry! The page you are looking for was not found.</p>
           </Layout>}/>

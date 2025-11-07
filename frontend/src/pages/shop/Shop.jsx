@@ -17,10 +17,10 @@ const Shop = () => {
   useEffect(() => {
     const category = new URLSearchParams(location.search).get("category");
     if (category) {
-      fetchData(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?limit=${items}&page=${page}&search=${category}`);
+      fetchData(`${import.meta.env.VITE_API_BASE_URL}/api/products?limit=${items}&page=${page}&search=${category}`);
       setCategory(category);
     } else {
-      fetchData(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?limit=${items}&page=${page}`);
+      fetchData(`${import.meta.env.VITE_API_BASE_URL}/api/products?limit=${items}&page=${page}`);
       setCategory("All");
     }
   }, [location]); /* When a NavLink/Link is clicked, a new location object reference is generated even if it points to the same route.
@@ -53,37 +53,37 @@ const Shop = () => {
   const changeCategory = (value) => {
     setCategory(value);
     if (value === "All") {
-      fetchData(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?limit=${items}&page=${page}`);
+      fetchData(`${import.meta.env.VITE_API_BASE_URL}/api/products?limit=${items}&page=${page}`);
     } else {
-      fetchData(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?limit=${items}&page=${page}&search=${value}`);
+      fetchData(`${import.meta.env.VITE_API_BASE_URL}/api/products?limit=${items}&page=${page}&search=${value}`);
     }
   };
 
   const changeItems = (value) => {
     setItems(value);
     if (category !== "All") {
-      fetchData(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?limit=${value}&page=${page}&search=${category}`);
+      fetchData(`${import.meta.env.VITE_API_BASE_URL}/api/products?limit=${value}&page=${page}&search=${category}`);
     } else if (category === "All") {
-      fetchData(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?limit=${value}&page=${page}`);
+      fetchData(`${import.meta.env.VITE_API_BASE_URL}/api/products?limit=${value}&page=${page}`);
     }
   };
 
   const previousPage = () => {
     if (page > 1 && category !== "All") {
-      fetchData(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?limit=${items}&page=${page - 1}&search=${category}`);
+      fetchData(`${import.meta.env.VITE_API_BASE_URL}/api/products?limit=${items}&page=${page - 1}&search=${category}`);
       setPage(page - 1);
     } else if (page > 1 && category === "All") {
-      fetchData(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?limit=${items}&page=${page - 1}`);
+      fetchData(`${import.meta.env.VITE_API_BASE_URL}/api/products?limit=${items}&page=${page - 1}`);
       setPage(page - 1);
     }
   };
 
   const nextPage = () => {
     if (page < totalPages && category !== "All") {
-      fetchData(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?limit=${items}&page=${page + 1}&search=${category}`);
+      fetchData(`${import.meta.env.VITE_API_BASE_URL}/api/products?limit=${items}&page=${page + 1}&search=${category}`);
       setPage(page + 1);
     } else if (page < totalPages && category === "All") {
-      fetchData(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?limit=${items}&page=${page + 1}`);
+      fetchData(`${import.meta.env.VITE_API_BASE_URL}/api/products?limit=${items}&page=${page + 1}`);
       setPage(page + 1);
     }
   };

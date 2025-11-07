@@ -148,7 +148,7 @@ const SignUp = () => {
     try {
       const newUser = { firstName, lastName, email, password, confirmPassword };
 
-      const res = await axios.post(`${import.meta.env.VITE_SERVER_BASE_URL}/api/users/sign-up`, newUser);
+      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/users/sign-up`, newUser);
       if (res.data.success) {
         setSuccess(true);
         setMessage(res.data.message);

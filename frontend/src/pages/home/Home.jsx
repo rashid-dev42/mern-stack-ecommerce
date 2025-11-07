@@ -10,7 +10,7 @@ const Home = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetchData(`${import.meta.env.VITE_SERVER_BASE_URL}/api/products?limit=12&page=1`);
+    fetchData(`${import.meta.env.VITE_API_BASE_URL}/api/products?limit=12&page=1`);
   }, []);
 
   const fetchData = (apiURL) => {

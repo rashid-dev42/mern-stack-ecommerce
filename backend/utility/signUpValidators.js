@@ -19,7 +19,6 @@ const validateEmail = async (email) => {
   let emailError = "";
 
   try {
-    await mongoose.connect(process.env.MONGODB_URI);
     const user = await User.findOne({ email }) || "";
 
     if (!email) {
@@ -32,7 +31,6 @@ const validateEmail = async (email) => {
   } catch (error) {
     next(error);
   } finally {
-    await mongoose.connection.close();
     return emailError;
   }
 };

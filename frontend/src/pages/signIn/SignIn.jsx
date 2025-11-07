@@ -32,20 +32,20 @@ const SignIn = () => {
     </div>);
     const signInData = { email, password };
     try {
-      const res = await axios.post(`${import.meta.env.VITE_SERVER_BASE_URL}/api/users/sign-in`, signInData);
+      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/users/sign-in`, signInData);
       if (res.data.success) {
         setButtonContent("Sign In");
         setSuccess(true);
         setMessage(res.data.message);
         setShowToast(true);
         const value = await pause(3000, false);
-        localStorage.setItem("token", res.data.signInData.token);
+        localStorage.setItem("authToken", res.data.signInData.authToken);
         localStorage.setItem("id", res.data.signInData.id);
         localStorage.setItem("firstName", res.data.signInData.firstName);
         localStorage.setItem("lastName", res.data.signInData.lastName);
         localStorage.setItem("email", res.data.signInData.email);
         setShowToast(value);
-        navigate("/");
+        navigate(-1);
       }
     } catch (error) {
       console.log(error);

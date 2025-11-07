@@ -1,10 +1,14 @@
 import "./Header.css";
-import { useSelector } from "react-redux";
-import MiniCart from "../miniCart/MiniCart";
+import { useSelector, useDispatch } from "react-redux";
+import { showMiniCart, closeMiniCart } from "../../features/mcDisplay/mcdSlice";
 import { Link } from "react-router-dom";
+import MiniCart from "../miniCart/MiniCart";
 
 const Header = () => {
-  const cartItems = useSelector(state => state.cartItems);
+  const cartItems = useSelector(state => state.cartReducer.cartItems);
+  // mcd = mini cart display
+  const miniCartDisplay = useSelector(state => state.mcdReducer.miniCartDisplay);
+  const dispatch = useDispatch();
 
   const showSidenav = () => {
     document.getElementById("Header-sidenav").classList.replace("d-none", "d-block");
@@ -12,15 +16,6 @@ const Header = () => {
 
   const closeSidenav = () => {
     document.getElementById("Header-sidenav").classList.replace("d-block", "d-none");
-  };
-
-  const showMiniCart = () => {
-    document.getElementById("Header-miniCart").classList.replace("d-none", "d-block");
-    closeSidenav();
-  };
-
-  const closeMiniCart = () => {
-    document.getElementById("Header-miniCart").classList.replace("d-block", "d-none");
   };
 
   return (
@@ -64,7 +59,7 @@ const Header = () => {
             <Link className="Header-navLink" to="/shop">Shop</Link>
           </div>
           <div className="Header-navItem">
-            <span role="button" className="Header-navLink" onClick={showMiniCart}>
+            <span role="button" className="Header-navLink" onClick={() => dispatch(showMiniCart())}>
               <i className="bi bi-cart"></i>
             </span>
             <span className="Header-itemCount">{cartItems.length}</span>
@@ -144,7 +139,7 @@ const Header = () => {
             <Link className="Header-sidenavLink" to="/shop">Shop</Link>
           </div>
           <div className="Header-sidenavItem position-relative">
-            <Link className="Header-sidenavLink" onClick={showMiniCart}>
+            <Link className="Header-sidenavLink" onClick={() => dispatch(showMiniCart())}>
               <i className="bi bi-cart"></i>
             </Link>
             {/* sic = sidenav item count */}
@@ -178,16 +173,16 @@ const Header = () => {
       </div>
 
       {/* Mini Cart Container */}
-      <div className="Header-miniCart d-none" id="Header-miniCart">
+      {miniCartDisplay && <div className="Header-miniCart">
         {/* mch = mini cart header */}
         <div className="Header-mch">
           <div className="d-flex h-100 justify-content-between align-items-center">
             <h4 className="ps-3">Mini Cart</h4>
-            <button className="close-btn" onClick={closeMiniCart}><i className="bi bi-x-lg"></i></button>
+            <button className="close-btn" onClick={() => dispatch(closeMiniCart())}><i className="bi bi-x-lg"></i></button>
           </div>
         </div>
         <MiniCart/>
-      </div>
+      </div>}
     </div>
   );
 };

@@ -61,8 +61,6 @@ const signUp = async (req, res, next) => {
     if (errorResult.confirmPasswordError) {
       errorStatus = 400;
     }
-
-    await mongoose.connect(process.env.MONGODB_URI);
     
     if (!errorStatus) {
       const passwordData = hashPassword(password);
@@ -74,8 +72,6 @@ const signUp = async (req, res, next) => {
     }
   } catch(error) {
     next(error);
-  } finally {
-    await mongoose.connection.close();
   }
 };
 
@@ -85,21 +81,20 @@ const signIn = async (req, res, next) => {
     const password = req.body.password;
     let passwordVerification = false;
 
-    await mongoose.connect(process.env.MONGODB_URI);
     const userInfo = await User.findOne({ email: email }) || "";
     if (userInfo !== "") {
       passwordVerification = verifyPassword(password, userInfo.password);
     }
     
     if (passwordVerification) {
-      const token = jwt.sign({
+      const authToken = jwt.sign({
         data: userInfo._id
-      }, process.env.PRIVATE_KEY, { expiresIn: "10000" });
+      }, process.env.PRIVATE_KEY, { expiresIn: "8h" });
       res.status(200).send({
         success: true,
         message: "Sign In Successful",
         signInData: {
-          token,
+          authToken,
           id: userInfo._id,
           firstName: userInfo.firstName,
           lastName: userInfo.lastName,
@@ -111,8 +106,6 @@ const signIn = async (req, res, next) => {
     }
   } catch (error) {
     next(error);
-  } finally {
-    await mongoose.connection.close();
   }
 };
 
@@ -125,7 +118,7 @@ const getUsers = async (req, res, next) => {
     if (role) {
       filter.role = role;
     }
-    await mongoose.connect(process.env.MONGODB_URI);
+
     const users = await User.find(filter, { password: 0 }).skip((page - 1) * limit).limit(limit);
     const countUsers = await User.find(filter).countDocuments();
     res.status(200).send({
@@ -134,8 +127,6 @@ const getUsers = async (req, res, next) => {
     });
   } catch (error) {
     next(error);
-  } finally {
-    await mongoose.connection.close();
   }
 };
 

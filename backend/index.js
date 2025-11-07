@@ -1,11 +1,13 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
+const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes.js");
 const productRoutes = require("./routes/productRoutes.js");
+const orderRoutes = require("./routes/orderRoutes.js");
 const app = express();
 const port = 5001;
 
-require("dotenv").config();
 
 app.use("/uploads", express.static("uploads"));
 
@@ -20,6 +22,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("404 not found");
@@ -34,6 +37,11 @@ app.use((error, req, res, next) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Backend app running at http://localhost:${port}`);
+app.listen(port, async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+  } catch (error) {
+    console.log(error);
+  }
+  console.log(`Backend app running at ${process.env.API_BASE_URL}`);
 });
