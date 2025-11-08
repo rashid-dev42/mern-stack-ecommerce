@@ -10,6 +10,7 @@ import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
 import SignOut from "./pages/signOut/SignOut";
 import VerifyOrder from "./pages/verifyOrder/VerifyOrder";
+import DashboardHome from "./pages/dashboard/dashboardHome/DashboardHome";
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/verify-order" element={<Layout>
             <VerifyOrder/>
           </Layout>}/>
+          <Route path="/dashboard" element={<DashboardHome/>}/>
           <Route path="*" element={<Layout>
             <p>404 Not Found. Sorry! The page you are looking for was not found.</p>
           </Layout>}/>

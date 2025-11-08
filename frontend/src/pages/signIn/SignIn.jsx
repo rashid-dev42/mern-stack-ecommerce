@@ -44,6 +44,7 @@ const SignIn = () => {
         localStorage.setItem("firstName", res.data.signInData.firstName);
         localStorage.setItem("lastName", res.data.signInData.lastName);
         localStorage.setItem("email", res.data.signInData.email);
+        localStorage.setItem("role", res.data.signInData.role);
         setShowToast(value);
         navigate(-1);
       }

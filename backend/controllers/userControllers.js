@@ -98,7 +98,8 @@ const signIn = async (req, res, next) => {
           id: userInfo._id,
           firstName: userInfo.firstName,
           lastName: userInfo.lastName,
-          email: userInfo.email
+          email: userInfo.email,
+          role: userInfo.role
         }
       });
     } else {
