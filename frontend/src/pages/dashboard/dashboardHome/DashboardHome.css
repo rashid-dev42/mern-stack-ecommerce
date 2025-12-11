@@ -1,0 +1,15 @@
+.Dashboard-container {
+  height: 100vh;
+}
+
+.Dashboard-sidebar {
+  float: left;
+  width: 250px;
+  height: 100%;
+}
+
+.Dashboard-main {
+  float: left;
+  width: calc(100% - 250px);
+  height: 100%;
+}

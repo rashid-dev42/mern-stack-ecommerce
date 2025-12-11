@@ -7,6 +7,7 @@
   --color-6: #ff0000;
   --color-7: #ff3333;
   --color-8: #d3dcf8;
+  --color-9: #1e90ff;
 }
 
 .App {
@@ -38,4 +39,8 @@
 
 .btn-h-1 {
   height: 50px;
+}
+
+.link-hover:hover {
+  background-color: var(--color-9);
 }

@@ -89,7 +89,7 @@ const signIn = async (req, res, next) => {
     if (passwordVerification) {
       const authToken = jwt.sign({
         data: userInfo._id
-      }, process.env.PRIVATE_KEY, { expiresIn: "8h" });
+      }, process.env.PRIVATE_KEY, { expiresIn: "1d" });
       res.status(200).send({
         success: true,
         message: "Sign In Successful",

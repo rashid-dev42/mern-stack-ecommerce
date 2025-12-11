@@ -36,7 +36,14 @@ const App = () => {
           <Route path="/verify-order" element={<Layout>
             <VerifyOrder/>
           </Layout>}/>
-          <Route path="/dashboard" element={<DashboardHome/>}/>
+          <Route path="/dashboard" element={<DashboardHome/>}>
+            <Route index element={<div>Overview</div>}/>
+            <Route path="/dashboard/orders" element={<div>Orders</div>}/>
+            <Route path="/dashboard/products" element={<div>Products</div>}/>
+            <Route path="/dashboard/users" element={<div>Users</div>}/>
+            <Route path="/dashboard/profile" element={<div>Profile</div>}/>
+            <Route path="/dashboard/my-orders" element={<div>MyOrders</div>}/>
+          </Route>
           <Route path="*" element={<Layout>
             <p>404 Not Found. Sorry! The page you are looking for was not found.</p>
           </Layout>}/>

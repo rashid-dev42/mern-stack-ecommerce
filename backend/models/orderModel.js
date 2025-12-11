@@ -73,6 +73,14 @@ const orderSchema = new Schema({
     },
     default: "Available"
   },
+  shippingStatus: {
+    type: String,
+    enum: {
+      values: ["Pending", "Delivered"],
+      message: 'Shipping status `{VALUE}` is not valid'
+    },
+    default: "Pending"
+  },
   date: dateSchema
 });
 
