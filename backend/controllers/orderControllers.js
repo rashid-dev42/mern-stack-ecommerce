@@ -133,4 +133,13 @@ const verifyOrder = async (req, res, next) => {
   }
 };
 
-module.exports = { checkout, verifyCheckout, verifyOrder };
+const countOrders = async (req, res, next) => {
+  try {
+    const totalOrders = await Order.find({ shippingStatus: req.query.shipping_status }).countDocuments();
+    res.send({ totalOrders });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { checkout, verifyCheckout, verifyOrder, countOrders };

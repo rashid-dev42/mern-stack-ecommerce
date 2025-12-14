@@ -11,6 +11,7 @@ import SignUp from "./pages/signUp/SignUp";
 import SignOut from "./pages/signOut/SignOut";
 import VerifyOrder from "./pages/verifyOrder/VerifyOrder";
 import DashboardHome from "./pages/dashboard/dashboardHome/DashboardHome";
+import Overview from "./pages/dashboard/overview/Overview";
 
 const App = () => {
   return (
@@ -37,7 +38,7 @@ const App = () => {
             <VerifyOrder/>
           </Layout>}/>
           <Route path="/dashboard" element={<DashboardHome/>}>
-            <Route index element={<div>Overview</div>}/>
+            <Route index element={<Overview/>}/>
             <Route path="/dashboard/orders" element={<div>Orders</div>}/>
             <Route path="/dashboard/products" element={<div>Products</div>}/>
             <Route path="/dashboard/users" element={<div>Users</div>}/>
