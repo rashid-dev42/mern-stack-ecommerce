@@ -17,7 +17,8 @@
 
 .Dashboard-content {
   height: calc(100% - 56px);
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .Dashboard-w-1 {

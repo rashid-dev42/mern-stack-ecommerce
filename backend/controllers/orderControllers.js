@@ -142,4 +142,19 @@ const countOrders = async (req, res, next) => {
   }
 };
 
-module.exports = { checkout, verifyCheckout, verifyOrder, countOrders };
+const getOrders = async (req, res, next) => {
+  try {
+    const orders = await Order.find({ shippingStatus: req.query.shipping_status });
+    res.send(orders);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = {
+  checkout,
+  verifyCheckout,
+  verifyOrder,
+  countOrders,
+  getOrders
+};
