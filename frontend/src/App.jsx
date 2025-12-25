@@ -13,6 +13,7 @@ import VerifyOrder from "./pages/verifyOrder/VerifyOrder";
 import DashboardHome from "./pages/dashboard/dashboardHome/DashboardHome";
 import Overview from "./pages/dashboard/overview/Overview";
 import Orders from "./pages/dashboard/orders/Orders";
+import Products from "./pages/dashboard/products/Products";
 
 const App = () => {
   return (
@@ -41,7 +42,7 @@ const App = () => {
           <Route path="/dashboard" element={<DashboardHome/>}>
             <Route index element={<Overview/>}/>
             <Route path="/dashboard/orders" element={<Orders/>}/>
-            <Route path="/dashboard/products" element={<div>Products</div>}/>
+            <Route path="/dashboard/products" element={<Products/>}/>
             <Route path="/dashboard/users" element={<div>Users</div>}/>
             <Route path="/dashboard/profile" element={<div>Profile</div>}/>
             <Route path="/dashboard/my-orders" element={<div>MyOrders</div>}/>

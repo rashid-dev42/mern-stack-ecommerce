@@ -144,8 +144,17 @@ const countOrders = async (req, res, next) => {
 
 const getOrders = async (req, res, next) => {
   try {
-    const orders = await Order.find({ shippingStatus: req.query.shipping_status });
-    res.send(orders);
+    const page = req.query.page;
+    const limit = req.query.limit;
+    const shippingStatus = req.query.shipping_status;
+
+    const orders = await Order.find({ shippingStatus: req.query.shipping_status }).skip((page - 1) * limit).limit(limit);
+    const countOrders = await Order.find({ shippingStatus: shippingStatus }).countDocuments();
+
+    res.send({
+      orders,
+      totalPages: Math.ceil(countOrders / limit)
+    });
   } catch (error) {
     next(error);
   }

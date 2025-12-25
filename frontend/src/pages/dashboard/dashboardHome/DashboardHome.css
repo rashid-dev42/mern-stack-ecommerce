@@ -6,6 +6,7 @@
   float: left;
   height: 100%;
   white-space: nowrap;
+  overflow-y: auto;
   transition: width 1s;
 }
 
@@ -17,8 +18,7 @@
 
 .Dashboard-content {
   height: calc(100% - 56px);
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .Dashboard-w-1 {
