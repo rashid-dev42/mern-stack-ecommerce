@@ -1,0 +1,9 @@
+.Users-table {
+  height: calc(100vh - 250px);
+  overflow: auto;
+}
+
+.Users-img-sm {
+  width: 100px;
+  height: 100px;
+}

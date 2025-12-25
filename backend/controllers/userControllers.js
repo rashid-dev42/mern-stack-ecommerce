@@ -124,7 +124,7 @@ const getUsers = async (req, res, next) => {
     const countUsers = await User.find(filter).countDocuments();
     res.status(200).send({
       users,
-      pages: Math.ceil(countUsers / limit)
+      totalPages: Math.ceil(countUsers / limit)
     });
   } catch (error) {
     next(error);
