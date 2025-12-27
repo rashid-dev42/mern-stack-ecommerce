@@ -41,6 +41,7 @@ const SignIn = () => {
         const value = await pause(3000, false);
         localStorage.setItem("authToken", res.data.signInData.authToken);
         localStorage.setItem("id", res.data.signInData.id);
+        localStorage.setItem("imgPath", res.data.signInData.imgPath);
         localStorage.setItem("firstName", res.data.signInData.firstName);
         localStorage.setItem("lastName", res.data.signInData.lastName);
         localStorage.setItem("email", res.data.signInData.email);

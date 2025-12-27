@@ -15,6 +15,7 @@ import Overview from "./pages/dashboard/overview/Overview";
 import Orders from "./pages/dashboard/orders/Orders";
 import Products from "./pages/dashboard/products/Products";
 import Users from "./pages/dashboard/users/Users";
+import Profile from "./pages/dashboard/profile/Profile";
 
 const App = () => {
   return (
@@ -45,7 +46,7 @@ const App = () => {
             <Route path="/dashboard/orders" element={<Orders/>}/>
             <Route path="/dashboard/products" element={<Products/>}/>
             <Route path="/dashboard/users" element={<Users/>}/>
-            <Route path="/dashboard/profile" element={<div>Profile</div>}/>
+            <Route path="/dashboard/profile" element={<Profile/>}/>
             <Route path="/dashboard/my-orders" element={<div>MyOrders</div>}/>
           </Route>
           <Route path="*" element={<Layout>

@@ -96,6 +96,7 @@ const signIn = async (req, res, next) => {
         signInData: {
           authToken,
           id: userInfo._id,
+          imgPath: userInfo.imgPath,
           firstName: userInfo.firstName,
           lastName: userInfo.lastName,
           email: userInfo.email,
