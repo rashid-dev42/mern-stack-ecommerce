@@ -160,10 +160,33 @@ const getOrders = async (req, res, next) => {
   }
 };
 
+const getMyOrders = async (req, res, next) => {
+  try {
+    const email = req.params.email;
+    const page = req.query.page;
+    const limit = req.query.limit;
+    const shippingStatus = req.query.shipping_status;
+
+    const myOrders = await Order.find({ $and: [{ email: email }, { shippingStatus: shippingStatus }] }).skip((page - 1) * limit).limit(limit);
+
+    console.log(myOrders);
+
+    const count = await Order.find({ $and: [{ email: email }, { shippingStatus: shippingStatus }] }).skip((page - 1) * limit).limit(limit).countDocuments();
+
+    res.status(200).send({
+      myOrders,
+      totalPages: Math.ceil(count / limit)
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   checkout,
   verifyCheckout,
   verifyOrder,
   countOrders,
-  getOrders
+  getOrders,
+  getMyOrders
 };

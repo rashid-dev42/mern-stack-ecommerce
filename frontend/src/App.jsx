@@ -16,6 +16,7 @@ import Orders from "./pages/dashboard/orders/Orders";
 import Products from "./pages/dashboard/products/Products";
 import Users from "./pages/dashboard/users/Users";
 import Profile from "./pages/dashboard/profile/Profile";
+import MyOrders from "./pages/dashboard/myOrders/MyOrders";
 
 const App = () => {
   return (
@@ -47,7 +48,7 @@ const App = () => {
             <Route path="/dashboard/products" element={<Products/>}/>
             <Route path="/dashboard/users" element={<Users/>}/>
             <Route path="/dashboard/profile" element={<Profile/>}/>
-            <Route path="/dashboard/my-orders" element={<div>MyOrders</div>}/>
+            <Route path="/dashboard/my-orders" element={<MyOrders/>}/>
           </Route>
           <Route path="*" element={<Layout>
             <p>404 Not Found. Sorry! The page you are looking for was not found.</p>

@@ -4,7 +4,8 @@ const {
   verifyCheckout,
   verifyOrder,
   countOrders,
-  getOrders 
+  getOrders, 
+  getMyOrders
 } = require("../controllers/orderControllers");
 const orderRoutes = express.Router();
 
@@ -22,5 +23,8 @@ orderRoutes.get("/count-orders", countOrders);
 
 // GET: /api/orders/get-orders
 orderRoutes.get("/get-orders", getOrders);
+
+// GET: /api/orders/get-my-orders/:email
+orderRoutes.get("/get-my-orders/:email", getMyOrders);
 
 module.exports = orderRoutes;
