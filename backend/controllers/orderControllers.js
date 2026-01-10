@@ -77,7 +77,7 @@ const verifyCheckout = async (req, res, next) => {
           * If the order has already confirmed, prevent re-verification of this order
           * Otherwise, in-stock item count of each products of this order will be reduced in the database
           */
-         return res.redirect(`https://gilded-cassata-4e9f28.netlify.app//verify-order?order_id=${orderId}`);
+         return res.redirect(`https://gilded-cassata-4e9f28.netlify.app/verify-order?order_id=${orderId}`);
       }
       order.cartItems.forEach(async (cartItem) => {
         const product = await Product.findOne({ _id: cartItem.productId });
