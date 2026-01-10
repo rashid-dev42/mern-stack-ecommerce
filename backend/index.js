@@ -6,7 +6,7 @@ const userRoutes = require("./routes/userRoutes.js");
 const productRoutes = require("./routes/productRoutes.js");
 const orderRoutes = require("./routes/orderRoutes.js");
 const app = express();
-const port = 5001;
+const port = process.env.PORT || 5001;
 
 
 app.use("/uploads", express.static("uploads"));
