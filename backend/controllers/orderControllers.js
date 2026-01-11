@@ -98,9 +98,9 @@ const verifyCheckout = async (req, res, next) => {
         availability: order.availability,
         date: order.date
       } });
-      res.redirect(`https://gilded-cassata-4e9f28.netlify.app//verify-order?order_id=${orderId}`);
+      res.redirect(`https://gilded-cassata-4e9f28.netlify.app/verify-order?order_id=${orderId}`);
     } else {
-      res.redirect(`https://gilded-cassata-4e9f28.netlify.app//verify-order?order_id=${orderId}`);
+      res.redirect(`https://gilded-cassata-4e9f28.netlify.app/verify-order?order_id=${orderId}`);
     }
   } catch (error) {
     await mongoose.connection.close();
