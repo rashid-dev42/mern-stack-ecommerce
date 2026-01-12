@@ -169,8 +169,6 @@ const getMyOrders = async (req, res, next) => {
 
     const myOrders = await Order.find({ $and: [{ email: email }, { shippingStatus: shippingStatus }] }).skip((page - 1) * limit).limit(limit);
 
-    console.log(myOrders);
-
     const count = await Order.find({ $and: [{ email: email }, { shippingStatus: shippingStatus }] }).skip((page - 1) * limit).limit(limit).countDocuments();
 
     res.status(200).send({
